@@ -1,0 +1,1 @@
+export const Label = ({ children, ...props }) => <label className='block font-medium mb-1' {...props}>{children}</label>;
