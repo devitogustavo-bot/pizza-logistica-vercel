@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -18,12 +18,12 @@ export default function Page() {
     orderBufferTimeMin: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log("Operational Parameters:", formData);
     alert("Parámetros guardados correctamente.");
@@ -50,7 +50,7 @@ export default function Page() {
               id={name}
               name={name}
               type="number"
-              value={formData[name]}
+              value={formData[name as keyof typeof formData]}
               onChange={handleChange}
               required
             />
